@@ -10,11 +10,15 @@
   {{/if}}
   
   {{#if currentUser}}
-  <div class="product-actions">
+  <div>
     <a href="/products/edit?id={{product.productid}}">Edit</a> | 
     <a href="/products/delete/{{product.productid}}" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
   </div>
   {{/if}}
+  <div>
+    <h3>Description</h3>
+    <p>This exclusive luxury item exemplifies the finest craftsmanship and attention to detail that defines our boutique collection. Each piece is carefully selected to ensure exceptional quality and timeless elegance, perfect for the discerning customer who values sophisticated style.</p>
+  </div>
 </div>
 
 <p><a href="/products">Back to Products</a></p>
