@@ -1,4 +1,9 @@
 {
+  "name": "atelier",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node atelier.js"
+  },
   "dependencies": {
     "body-parser": "^2.2.0",
     "cookie-parser": "^1.4.7",
