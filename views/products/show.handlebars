@@ -1,13 +1,28 @@
 <h1>Product Details</h1>
 
 <div class="product-details">
-  <h2>{{product.Name}}</h2>
+  <h2>{{product.name}}</h2>
   
-  <p><strong>Price:</strong> ${{product.Price}}</p>
+  <div class="product-info">
+    <p class="price"><strong>Price:</strong> ${{product.price}}</p>
+    
+    {{#if product.size}}
+      <p class="sizes"><strong>Available Sizes:</strong> {{product.size}}</p>
+    {{/if}}
+    
+    <div class="placeholder-image">
+      <p>Product Image (Coming Soon)</p>
+    </div>
+    
+    <div class="product-description">
+      <p>This luxury item exemplifies the exquisite craftsmanship that defines our boutique collection.</p>
+    </div>
+  </div>
   
-  {{#if product.Size}}
-    <p><strong>Available Sizes:</strong> {{product.Size}}</p>
-  {{/if}}
+  <div class="product-actions">
+    <a href="/products/edit?id={{product.productid}}">Edit</a> | 
+    <a href="/products/delete/{{product.productid}}" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+  </div>
 </div>
 
 <p><a href="/products">Back to Products</a></p>
