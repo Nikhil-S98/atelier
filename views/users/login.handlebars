@@ -1,0 +1,24 @@
+<h1>Admin Login</h1>
+
+{{#if flash}}
+<div class="flash {{flash.type}}">
+  <strong>{{flash.intro}}</strong> {{flash.message}}
+</div>
+{{/if}}
+
+<form action="/users/login" method="post">
+  <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+  <div>
+    <label for="email">Username:</label>
+    <input type="text" id="email" name="email" required>
+  </div>
+  
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+  </div>
+  
+  <button type="submit">Login</button>
+</form>
+
+<p><a href="/">Back to Home</a></p>

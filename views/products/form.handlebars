@@ -1,10 +1,12 @@
 {{#if isEdit}}
 <h1>Edit Product</h1>
 {{else}}
-<h1>Add New Product</h1>
+<h1>Add Product</h1>
 {{/if}}
 
 <form action="/products/upsert" method="post">
+  <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+  
   {{#if product}}
   <input type="hidden" name="productid" value="{{product.productid}}">
   {{/if}}
@@ -20,11 +22,11 @@
   </div>
   
   <div>
-    <label for="size">Available Sizes:</label>
+    <label for="size">Size:</label>
     <input type="text" id="size" name="size" value="{{product.size}}">
   </div>
   
-  <button type="submit">Save Product</button>
+  <button type="submit">Save</button>
 </form>
 
-<p><a href="/products">Back to Products</a></p>
+<a href="/products">Back to Products</a>

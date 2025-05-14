@@ -1,16 +1,39 @@
 <h1>Products</h1>
+
+{{#if flash}}
+<div class="flash {{flash.type}}">
+  <strong>{{flash.intro}}</strong> {{flash.message}}
+</div>
+{{/if}}
+
+{{#if currentUser}}
 <a href="/products/form">Add a new product</a>
+{{/if}}
+
 <p>Product List Below:</p>
 {{#if products.length}}
   <ul>
   {{#each products}}
     <li>
       <a href="/products/show/{{this.productid}}">{{this.name}} - ${{this.price}}</a>
-      <a href="/products/edit?id={{this.productid}}">edit</a>
-      <a href="/products/delete/{{this.productid}}" onclick="return confirm('Are you sure?')">delete</a>
+      {{#if ../currentUser}}
+        <a href="/products/edit?id={{this.productid}}">edit</a>
+        <a href="/products/delete/{{this.productid}}" onclick="return confirm('Are you sure?')">delete</a>
+      {{/if}}
     </li>
   {{/each}}
   </ul>
 {{else}}
   <p>No products found</p>
 {{/if}}
+
+<div class="auth-controls">
+  {{#if currentUser}}
+    <form action="/users/logout" method="post">
+      <input type="hidden" name="_csrf" value="{{_csrfToken}}">
+      <button type="submit">Logout</button>
+    </form>
+  {{else}}
+    <a href="/users/login">Admin Login</a>
+  {{/if}}
+</div>
