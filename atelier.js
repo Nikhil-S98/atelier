@@ -1,11 +1,25 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const expressSession = require('express-session')
 
 const { credentials } = require('./config')
+
+const indexRouter = require('./routes/index');
+const productsRouter = require('./routes/products');
 
 const app = express()
 const port = 3000
 
-const indexRouter = require('./routes/index');
+//extra platform setup
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser(credentials.cookieSecret));
+app.use(expressSession({
+  secret: credentials.cookieSecret,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+}));
 
 // view engine setup
 var handlebars = require('express-handlebars').create({
@@ -33,6 +47,7 @@ app.set('view engine', 'handlebars');
 
 //routes
 app.use('/', indexRouter);
+app.use('/products', productsRouter);
 
 // custom 404 page
 app.use((req, res) => {

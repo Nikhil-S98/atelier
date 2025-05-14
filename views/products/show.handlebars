@@ -1,0 +1,13 @@
+<h1>Product Details</h1>
+
+<div class="product-details">
+  <h2>{{product.Name}}</h2>
+  
+  <p><strong>Price:</strong> ${{product.Price}}</p>
+  
+  {{#if product.Size}}
+    <p><strong>Available Sizes:</strong> {{product.Size}}</p>
+  {{/if}}
+</div>
+
+<p><a href="/products">Back to Products</a></p>

@@ -1,0 +1,10 @@
+<h1>Products</h1>
+<a href="/products/form">Add a new product</a>
+<ul class="product-list">
+  {{#each products}}
+    <li>
+      <a href="/products/show/{{this.productid}}">{{this.name}} - ${{this.price}}</a>
+      <a href="/products/edit?id={{this.productid}}">edit</a>
+    </li>
+  {{/each}}
+</ul>
